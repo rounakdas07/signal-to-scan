@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f7f7f0">
+  <title>Signal to Scan · Breast cancer evidence</title>
+  <meta name="description" content="Trace the days between a positive blood test and confirmed breast cancer recurrence. Explore six studies, their patient counts and what imaging showed.">
+  <meta property="og:title" content="Signal to Scan · How early did blood tests flag recurrence?">
+  <meta property="og:description" content="Six breast cancer studies. The patients, the time intervals and the original evidence.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rounakdas07.github.io/signal-to-scan/">
+  <meta property="og:image" content="https://rounakdas07.github.io/signal-to-scan/preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Signal to Scan. Two GenoCTC cases with recurrence confirmed 43 and 69 days after a positive blood test.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="./mark.svg" type="image/svg+xml">
+  <link rel="preload" href="./fonts/instrument-serif.woff" as="font" type="font/woff" crossorigin>
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./app.mjs"></script>
+</head>
+<body>
+  <a class="skip" href="#selected-study">Skip to the selected study</a>
+  <header class="mast">
+    <div class="shell mast-in">
+      <a class="brand" href="./" aria-label="Signal to Scan home"><img src="./mark.svg" height="33" width="33" alt=""> Signal to Scan</a>
+      <a class="method-link" href="#methods">Method &amp; sources <span aria-hidden="true">↓</span></a>
+    </div>
+  </header>
+  <main class="shell">
+    <section class="intro" aria-labelledby="question">
+      <div><p class="eyebrow"><span class="rule"></span> Breast cancer surveillance</p>
+      <h1 id="question">How early did blood tests<br class="wide-break"> flag <em>recurrence?</em></h1></div>
+      <p class="intro-text">Explore six published studies. See how many people had an early signal and whether researchers compared it with a scan.</p>
+    </section>
+    <noscript><p class="no-js">This explorer needs JavaScript to switch studies. The first example comes from GenoCTC. Two recurrences were confirmed 43 and 69 days after a positive test prompted further checks. <a href="https://doi.org/10.3389/fonc.2026.1903915">Read the study</a>.</p></noscript>
+    <div class="workspace">
+      <aside class="picker" aria-label="Choose a study">
+        <p class="small-title" id="blood-label">Blood test</p>
+        <div class="groups" role="group" aria-labelledby="blood-label">
+          <button type="button" class="group" data-group="cells" aria-pressed="true">Whole cells</button>
+          <button type="button" class="group" data-group="dna" aria-pressed="false">Tumour DNA</button>
+        </div>
+        <div class="desktop-only">
+          <p class="small-title study-lbl">Choose a study</p>
+          <div id="study-list" class="study-list"></div>
+        </div>
+        <div class="mobile-picker">
+          <label for="study-select">Study</label>
+          <select id="study-select"></select>
+        </div>
+      </aside>
+      <article class="study" id="selected-study" aria-labelledby="study-name" tabindex="-1">
+        <header class="study-head"><div class="identity"><span class="assay-icon" aria-hidden="true"></span><h2 id="study-name"></h2></div><span class="byline" id="byline"></span></header>
+        <div class="result-grid">
+          <div class="headline-finding">
+            <p id="metric" class="metric"></p>
+            <p id="summary" class="summary"></p>
+            <p id="cohort" class="cohort"></p>
+          </div>
+          <section id="chart-box" class="chart-box" aria-label="Study data"></section>
+        </div>
+        <section class="scan" aria-labelledby="scan-title">
+          <span class="scan-glyph" aria-hidden="true"></span>
+          <div><h3 id="scan-title">What did the scans show?</h3><p id="scan-comment"></p><button type="button" id="compare-scans" class="text-action">See a study that timed scans <span aria-hidden="true">→</span></button></div>
+        </section>
+        <div class="study-actions">
+          <a id="paper-link" class="primary" target="_blank" rel="noopener">Read the paper <span aria-hidden="true">↗</span></a>
+          <button type="button" id="copy-finding" class="secondary"><span class="copy-glyph" aria-hidden="true"></span>Copy finding</button>
+          <button type="button" id="toggle-design" class="quiet" aria-expanded="false" aria-controls="design-info">Study details <span aria-hidden="true">＋</span></button>
+        </div>
+        <div id="design-info" class="design" hidden></div>
+        <div id="copy-fallback" class="fallback" hidden><label for="copy-text">Select and copy this finding</label><textarea id="copy-text" rows="5" readonly></textarea></div>
+      </article>
+    </div>
+    <div class="bottom">
+      <details id="methods" class="methods">
+        <summary>Method &amp; sources <span aria-hidden="true">＋</span></summary>
+        <div class="method-body">
+          <h3>What the interval measures</h3>
+          <p>The clock starts at a positive blood result and ends at the event each paper recorded. A clinical diagnosis, a first positive scan and a scan ordered because of the blood result answer different questions. Sampling frequency also affects the interval.</p>
+          <h3>Which evidence is included?</h3>
+          <p>Six selected primary studies of follow-up after treatment for breast cancer, reviewed on 12 November 2026. Each reports confirmed recurrence with a blood-test result or staging after a blood-test alert. Studies of progression in known metastatic disease fall outside this review. This is a curated selection. Numbers stay within their original cohorts.</p>
+          <h3>Counting days</h3>
+          <p>For GenoCTC and EBLIS, the papers give individual intervals. Pick a minimum to count documented intervals at least that long. Every observed recurrence stays in the denominator, including undetected cases and positive results without a usable date. Each study card identifies the endpoint.</p>
+          <h3>Why this matters for Frontier</h3>
+          <p>Frontier is developing Sentinel qCTC to count intact circulating tumour cells. The whole-cell studies are the closest comparisons here. The tumour DNA studies track a different signal. All six evaluated other assays. A direct Sentinel study would need the dates of blood draws and scans, how each work-up started, and results for people who relapsed with a negative blood test.</p>
+          <div class="method-links"><a href="https://frontierdiagnostics.net/blood-tests-for-cancer-recurrence-how-ctc-monitoring-could-support-follow-up-care/" target="_blank" rel="noopener">Frontier’s research question ↗</a><a href="https://frontierdiagnostics.net/the-big-picture-on-breast-cancer/" target="_blank" rel="noopener">Sentinel development status ↗</a></div>
+          <h3>Original papers</h3>
+          <ol class="source-list" id="sources"></ol>
+          <a id="export-link" href="./study-evidence.csv" download="study-evidence.csv" class="file-link">Download the six study summaries (.csv) <span aria-hidden="true">↓</span></a>
+        </div>
+      </details>
+      <footer class="footer"><span>Independent research tool by <strong>Rounak Das</strong></span><a href="https://github.com/rounakdas07/signal-to-scan" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a></footer>
+    </div>
+  </main>
+  <p id="announcer" class="sr-only" role="status"></p>
+</body>
+</html>
